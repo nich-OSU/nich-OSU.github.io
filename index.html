@@ -4,23 +4,49 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Nicholas Murray - Resume</title>
-  <link rel="apple-touch-icon.png" sizes="180x180" href="apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-  <link rel="icon" href="favicon.ico" type="image/x-icon">
-  <link rel="manifest" href="/site.webmanifest">
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
   <style>
     body {
-      font-family: Arial, sans-serif;
-      max-width: 900px;
-      margin: 40px auto;
-      padding: 0 1rem;
+      font-family: "Segoe UI", Arial, sans-serif;
+      background-color: #f8f9fb;
+      color: #333;
+      margin: 0;
+      padding: 0;
       line-height: 1.6;
     }
-    h1 {
+    header {
       text-align: center;
+      padding: 2rem 1rem;
+      background: #fff;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    header img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 1rem;
+    }
+    header h1 {
+      margin: 0.2rem 0;
+      font-size: 1.8rem;
+    }
+    header p {
+      margin: 0.2rem 0;
+      font-size: 1rem;
+      color: #555;
+    }
+    .links a {
+      margin: 0 0.5rem;
+      color: #0073b1;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .links a:hover {
+      text-decoration: underline;
     }
     iframe {
+      display: block;
       width: 100%;
       height: 90vh;
       border: none;
@@ -28,7 +54,18 @@
   </style>
 </head>
 <body>
-  <h1>Nicholas Murray - Resume</h1>
+  <header>
+    <img src="profile.jpg" alt="Nicholas Murray Photo">
+    <h1>Nicholas Murray</h1>
+    <p>Software Developer | Python • JavaScript • Backend Systems</p>
+    <div class="links">
+      <a href="mailto:ncmurray@gmail.com">Email</a> |
+      <a href="https://www.linkedin.com/in/nicholas-murray-mba-6664b63a/">LinkedIn</a> |
+      <a href="https://github.com/nich-OSU">GitHub</a>
+    </div>
+  </header>
+
   <iframe src="Nicholas_Murray_Resume.pdf#navpanes=0&scrollbar=0"></iframe>
 </body>
 </html>
+
