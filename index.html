@@ -5,57 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Nicholas Murray - Resume</title>
   <link rel="icon" href="favicon.ico" type="image/x-icon" />
-  <style>
-    body {
-      font-family: "Segoe UI", Arial, sans-serif;
-      background-color: #f8f9fb;
-      color: #333;
-      margin: 0;
-      padding: 0;
-      line-height: 1.6;
-    }
-    header {
-      text-align: center;
-      padding: 2rem 1rem;
-      background: #fff;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    }
-    header img {
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      object-fit: cover;
-      margin-bottom: 1rem;
-    }
-    header h1 {
-      margin: 0.2rem 0;
-      font-size: 1.8rem;
-    }
-    header p {
-      margin: 0.2rem 0;
-      font-size: 1rem;
-      color: #555;
-    }
-    .links a {
-      margin: 0 0.5rem;
-      color: #0073b1;
-      text-decoration: none;
-      font-weight: 500;
-    }
-    .links a:hover {
-      text-decoration: underline;
-    }
-    iframe {
-      display: block;
-      width: 100%;
-      height: 90vh;
-      border: none;
-    }
-    #video-deliverables p {
-      margin: 0.2rem 0;
-      padding: 2rem 1rem;
-    }
-  </style>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <header>
@@ -70,34 +20,43 @@
   </header>
 
   <iframe src="Nicholas_Murray_Resume.pdf#navpanes=0&scrollbar=0"></iframe>
+
   <section id="video-deliverables">
     <h2>Projects</h2>
+    <table class="video-table">
+      <tr>
+        <td>
+          <a href="https://www.youtube.com/watch?v=JrovPBIFX2U" target="_blank" rel="noopener noreferrer">
+            <img 
+              class="video-thumbnail"
+              src="https://img.youtube.com/vi/JrovPBIFX2U/hqdefault.jpg" 
+              alt="Video Deliverable: Anti-TimeSink Capstone"
+            />
+          </a>
+        </td>
+        <td class="video-description">
+          <strong>Anti-TimeSink Capstone Project</strong>
+          <em>Demonstration of the Capstone project “Anti-TimeSink”: a user-initiated website blacklist system integrated with a local DNS server to improve focus and productivity.</em>
+        </td>
+      </tr>
 
-      <figure>
-        <figcaption><strong>Anti-TimeSink Capstone Project</strong></figcaption>
-        <a href="https://www.youtube.com/watch?v=JrovPBIFX2U" target="_blank" rel="noopener noreferrer">
-          <img 
-            src="https://img.youtube.com/vi/JrovPBIFX2U/hqdefault.jpg" 
-            alt="Video Deliverable: Anti-TimeSink Capstone"
-            style="width:100%; max-width:400px; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.15); margin-bottom:1rem;"
-          />
-        </a>
-        <p><em>Demonstration of the Capstone project Anti-TimeSink User initiated blacklisting of websites to local DNS Server</em></p>
-      </figure>
-
-      <figure>
-        <figcaption><strong>Ferry Finder Web based graphical depiction</strong></figcaption>
-        <a href="https://www.youtube.com/watch?v=NDSnDXv_4A0" target="_blank" rel="noopener noreferrer">
-          <img 
-            src="https://img.youtube.com/vi/NDSnDXv_4A0/hqdefault.jpg" 
-            alt="Video Deliverable: Ferry Finder"
-            style="width:100%; max-width:400px; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.15); margin-bottom:1rem;"
-          />
-        </a>
-        <p><em>Presentation video summarizing Ferry Finder project using WSF API to graphically depict ferry routes based on current time and future schedule.</em></p>
-      </figure>
+      <tr>
+        <td>
+          <a href="https://www.youtube.com/watch?v=NDSnDXv_4A0" target="_blank" rel="noopener noreferrer">
+            <img 
+              class="video-thumbnail"
+              src="https://img.youtube.com/vi/NDSnDXv_4A0/hqdefault.jpg" 
+              alt="Video Deliverable: Ferry Finder"
+            />
+          </a>
+        </td>
+        <td class="video-description">
+          <strong>Ferry Finder Web Application</strong>
+          <em>Presentation video summarizing the Ferry Finder project using the WSF API to visually depict ferry routes and schedules dynamically based on real-time data.</em>
+        </td>
+      </tr>
+    </table>
   </section>
 
 </body>
 </html>
-
