@@ -1,9 +1,12 @@
-// Toggle dark mode with localStorage persistence
-const toggle = document.getElementById("darkToggle");
-
+// Apply saved theme on page load
 if (localStorage.theme === "light") {
   document.documentElement.classList.remove("dark");
+} else {
+  document.documentElement.classList.add("dark");
 }
+
+// Toggle button
+const toggle = document.getElementById("darkToggle");
 
 toggle.addEventListener("click", () => {
   document.documentElement.classList.toggle("dark");
