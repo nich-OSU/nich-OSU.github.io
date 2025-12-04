@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Resume - Nicholas Murray</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script defer src="main.js"></script>
+</head>
+
+<body class="bg-gray-900 text-gray-200 min-h-screen">
+
+  <nav class="p-4 bg-gray-800 shadow-md flex justify-between items-center">
+    <h1 class="text-xl font-semibold">Resume</h1>
+
+    <div class="flex items-center space-x-4">
+      <a href="index.html" class="hover:underline">← Back to Home</a>
+      <a href="Nicholas_Murray_Resume.pdf" download
+         class="px-3 py-2 bg-blue-600 hover:bg-blue-500 rounded shadow">
+        Download PDF
+      </a>
+
+      <button id="darkToggle" class="p-2 rounded bg-gray-700 hover:bg-gray-600">🌓</button>
+    </div>
+  </nav>
+
+  <div class="max-w-5xl mx-auto mt-8 px-4">
+    <iframe src="Nicholas_Murray_Resume.pdf#view=FitH"
+            class="w-full h-[85vh] border border-gray-700 rounded shadow-lg"></iframe>
+  </div>
+
+</body>
+</html>
