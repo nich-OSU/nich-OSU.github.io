@@ -1,19 +1,14 @@
-// Apply saved theme on page load
-if (localStorage.theme === "light") {
-  document.documentElement.classList.remove("dark");
-} else {
+
+// Determine initial mode
+if (localStorage.theme === "dark") {
   document.documentElement.classList.add("dark");
+} else {
+  document.documentElement.classList.remove("dark");
 }
 
-// Toggle button
 const toggle = document.getElementById("darkToggle");
 
 toggle.addEventListener("click", () => {
-  document.documentElement.classList.toggle("dark");
-
-  if (document.documentElement.classList.contains("dark")) {
-    localStorage.theme = "dark";
-  } else {
-    localStorage.theme = "light";
-  }
+  const isDark = document.documentElement.classList.toggle("dark");
+  localStorage.theme = isDark ? "dark" : "light";
 });
