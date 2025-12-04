@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Scan Me - Nicholas Murray</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- QR Code Generator -->
+  <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
+</head>
+
+<body class="bg-gray-900 text-gray-200 min-h-screen flex flex-col items-center justify-center">
+
+  <h1 class="text-3xl font-semibold mb-6">Scan to Open My Website</h1>
+
+  <canvas id="qrCanvas" class="shadow-xl border border-gray-800 rounded-lg"></canvas>
+
+  <p class="mt-6 text-gray-400">nich-OSU.github.io</p>
+
+  <script>
+    QRCode.toCanvas(
+      document.getElementById("qrCanvas"),
+      "https://nich-OSU.github.io/",
+      { width: 260, margin: 2 },
+      function (error) { if (error) console.error(error); }
+    );
+  </script>
+
+</body>
+</html>
