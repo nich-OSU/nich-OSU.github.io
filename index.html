@@ -5,54 +5,55 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Nicholas Murray</title>
 
-  <!-- TailwindCSS CDN -->
+  <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- AOS Animation Library -->
+  <!-- AOS Animations -->
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
 
   <!-- Dark Mode Script -->
   <script defer src="main.js"></script>
-
-  <!-- access to icons  -->
-  <script src="https://unpkg.com/lucide@latest"></script>
 
 </head>
 
 <body class="bg-gray-100 text-gray-900 dark:bg-gray-900 dark:text-gray-100 min-h-screen">
 
   <!-- NAVBAR -->
-  <nav class="w-full py-4 px-6 flex justify-between items-center bg-gray-800 shadow-lg">
+  <nav class="w-full py-4 px-6 flex justify-between items-center bg-gray-800 dark:bg-gray-800 text-gray-100 shadow-lg">
     <h1 class="text-xl font-semibold tracking-wide">Nicholas Murray</h1>
 
     <div class="flex items-center space-x-4">
+
       <a href="index.html" class="hover:underline">Home</a>
       <a href="videos.html" class="hover:underline">Videos</a>
       <a href="resume.html" class="hover:underline">Resume</a>
-      <a href="qr.html"
-         class="p-2 rounded hover:bg-gray-700 transition"
-         aria-label="QR Code Page">
-         <i data-lucide="qr-code" class="w-6 h-6"></i>
+
+      <!-- QR Icon Link -->
+      <a href="qr.html" class="p-2 rounded hover:bg-gray-700 transition" aria-label="QR Code Page">
+        <i data-lucide="qr-code" class="w-6 h-6"></i>
       </a>
 
       <!-- Dark Mode Toggle -->
-      <button id="darkToggle" class="p-2 rounded bg-gray-700 hover:bg-gray-600">
+      <button id="darkToggle"
+              class="p-2 rounded bg-gray-700 hover:bg-gray-600 transition">
         🌓
       </button>
     </div>
   </nav>
 
-  <!-- HERO SECTION -->
+  <!-- HERO -->
   <section class="text-center mt-10 px-6" data-aos="fade-up">
     <img src="profile.png" alt="Profile Photo"
          class="w-32 h-32 mx-auto rounded-full shadow-lg border border-gray-700" />
 
     <h2 class="text-4xl font-bold mt-6">Software Developer</h2>
-    <p class="text-gray-400 mt-2 max-w-xl mx-auto">
+    <p class="text-gray-600 dark:text-gray-300 mt-2 max-w-xl mx-auto">
       Python · JavaScript · Backend Systems · Problem Solver · Continuous Learner
     </p>
 
-    <!-- Resume Button -->
     <div class="mt-6">
       <a href="resume.html"
          class="inline-block bg-blue-600 hover:bg-blue-500 text-white px-6 py-3 rounded-lg shadow transition">
@@ -64,39 +65,39 @@
   <!-- ABOUT ME -->
   <section class="max-w-3xl mx-auto my-16 px-6" data-aos="fade-up">
     <h3 class="text-2xl font-semibold mb-4">About Me</h3>
-    <p class="text-gray-300 leading-relaxed">
+    <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
       I recently graduated with a Bachelor's degree in Computer Science and am pursuing a career
       as a Software Development Engineer. I enjoy solving real problems with clean, maintainable code
       and building projects that stretch my understanding of systems and algorithms.
     </p>
   </section>
 
-  <!-- PROJECTS (HIDDEN FOR NOW) -->
+  <!-- HIDDEN PROJECTS SECTION -->
   <section id="projects" class="hidden max-w-4xl mx-auto my-16 px-6" data-aos="fade-up">
     <h3 class="text-2xl font-semibold mb-4">Projects</h3>
-    <p class="text-gray-400 italic">This section is currently under construction.</p>
+    <p class="text-gray-500 dark:text-gray-400 italic">This section is currently under construction.</p>
   </section>
 
-  <!-- VIDEO DELIVERABLES LINK -->
+  <!-- LINK TO VIDEOS -->
   <section class="text-center my-20">
     <a href="videos.html"
-       class="text-blue-400 hover:underline text-lg">
-       → View Videos of School Deliverables
+       class="text-blue-500 hover:underline text-lg">
+       → View Video Deliverables
     </a>
   </section>
 
   <!-- FOOTER -->
-  <footer class="text-center py-8 text-gray-500">
+  <footer class="text-center py-8 text-gray-500 dark:text-gray-400">
     © 2025 Nicholas Murray •
     <a href="mailto:ncmurray@gmail.com" class="hover:underline">Email</a> •
     <a href="https://github.com/nich-OSU" class="hover:underline">GitHub</a> •
     <a href="https://www.linkedin.com/in/nicholas-murray-mba-6664b63a/" class="hover:underline">LinkedIn</a>
   </footer>
 
-  <!-- AOS Script -->
+  <!-- AOS Script + Lucide Init -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script>AOS.init();</script>
   <script>
+    AOS.init();
     lucide.createIcons();
   </script>
 
