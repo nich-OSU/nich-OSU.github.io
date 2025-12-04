@@ -1,62 +1,70 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en">
 <head>
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>Video Deliverables</title>
 
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
   <script defer src="main.js"></script>
 
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
 </head>
 
 <body class="bg-gray-100 text-gray-900 dark:bg-gray-900 dark:text-gray-100 min-h-screen">
 
-  <nav class="p-4 bg-gray-800 shadow-md flex justify-between items-center">
+  <nav class="p-4 bg-gray-800 shadow-md flex justify-between items-center text-gray-100">
     <h1 class="text-xl font-semibold">Video Deliverables</h1>
 
     <div class="flex items-center space-x-4">
-      <a href="index.html" class="hover:underline">← Back to Home</a>
-      <button id="darkToggle" class="p-2 rounded bg-gray-700 hover:bg-gray-600">🌓</button>
+
+      <a href="index.html" class="hover:underline">← Home</a>
+
+      <button id="darkToggle" class="p-2 rounded bg-gray-700 hover:bg-gray-600">
+        🌓
+      </button>
     </div>
   </nav>
 
   <div class="grid md:grid-cols-2 gap-10 max-w-5xl mx-auto mt-10 px-6">
 
-    <!-- Video 1 -->
     <div data-aos="fade-up">
       <a href="https://www.youtube.com/watch?v=JrovPBIFX2U" target="_blank">
         <img src="https://img.youtube.com/vi/JrovPBIFX2U/hqdefault.jpg"
              class="rounded-lg shadow-lg hover:scale-[1.02] transition" />
       </a>
       <h3 class="text-lg font-semibold mt-3">Anti-TimeSink Capstone Project</h3>
-      <p class="text-gray-400 text-sm">
-        Demonstration of the Anti-TimeSink DNS-based website blacklist system.
+      <p class="text-gray-600 dark:text-gray-400 text-sm">
+        DNS-based website blacklist system.
       </p>
     </div>
 
-    <!-- Video 2 -->
     <div data-aos="fade-up">
       <a href="https://www.youtube.com/watch?v=NDSnDXv_4A0" target="_blank">
         <img src="https://img.youtube.com/vi/NDSnDXv_4A0/hqdefault.jpg"
              class="rounded-lg shadow-lg hover:scale-[1.02] transition" />
       </a>
       <h3 class="text-lg font-semibold mt-3">Ferry Finder Project</h3>
-      <p class="text-gray-400 text-sm">
-        Graphical API-based ferry route visualization.
+      <p class="text-gray-600 dark:text-gray-400 text-sm">
+        Graphical ferry route visualization using WSF API.
       </p>
     </div>
 
   </div>
 
-  <footer class="text-center py-10 text-gray-500">
+  <footer class="text-center py-10 text-gray-500 dark:text-gray-400">
     <a href="index.html" class="hover:underline">← Back to Home</a>
   </footer>
 
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script>AOS.init();</script>
+  <script>
+    AOS.init();
+    lucide.createIcons();
+  </script>
 
 </body>
 </html>
