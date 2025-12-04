@@ -1,24 +1,29 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en">
 <head>
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>Scan Me - Nicholas Murray</title>
 
   <script src="https://cdn.tailwindcss.com"></script>
-
-  <!-- QR Code Generator -->
   <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <script defer src="main.js"></script>
+
 </head>
 
-<body class="bg-gray-100 text-gray-900 dark:bg-gray-900 dark:text-gray-100 min-h-screen flex flex-col items-center justify-center">
+<body class="flex flex-col items-center justify-center min-h-screen
+             bg-gray-100 text-gray-900
+             dark:bg-gray-900 dark:text-gray-100">
 
   <h1 class="text-3xl font-semibold mb-6">Scan to Open My Website</h1>
 
-  <canvas id="qrCanvas" class="shadow-xl border border-gray-800 rounded-lg"></canvas>
+  <canvas id="qrCanvas" class="shadow-xl border border-gray-700 rounded-lg bg-white p-2"></canvas>
 
-  <p class="mt-6 text-gray-400">nich-OSU.github.io</p>
+  <p class="mt-6 text-gray-600 dark:text-gray-400">nich-OSU.github.io</p>
 
   <script>
     QRCode.toCanvas(
@@ -27,6 +32,8 @@
       { width: 260, margin: 2 },
       function (error) { if (error) console.error(error); }
     );
+
+    lucide.createIcons();
   </script>
 
 </body>
