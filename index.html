@@ -24,26 +24,37 @@
 
   <!-- NAVBAR -->
   <nav class="w-full py-4 px-6 flex justify-between items-center bg-gray-800 dark:bg-gray-800 text-gray-100 shadow-lg">
-    <h1 class="text-xl font-semibold tracking-wide">Nicholas Murray</h1>
 
-    <div class="flex items-center space-x-4">
+  <!-- Left side -->
+  <h1 class="text-lg sm:text-xl font-semibold tracking-wide">Nicholas</h1>
 
-      <a href="index.html" class="hover:underline">Home</a>
-      <a href="videos.html" class="hover:underline">Videos</a>
-      <a href="resume.html" class="hover:underline">Resume</a>
+  <!-- Right side icons (mobile-first) -->
+  <div class="flex items-center space-x-4">
 
-      <!-- QR Icon Link -->
-      <a href="qr.html" class="p-2 rounded hover:bg-gray-700 transition" aria-label="QR Code Page">
-        <i data-lucide="qr-code" class="w-6 h-6"></i>
-      </a>
+    <!-- Videos -->
+    <a href="videos.html"
+       aria-label="Videos"
+       class="p-2 rounded hover:bg-gray-700 transition">
+      <i data-lucide="video" class="w-5 h-5 sm:w-6 sm:h-6"></i>
+    </a>
 
-      <!-- Dark Mode Toggle -->
-      <button id="darkToggle"
-              class="p-2 rounded bg-gray-700 hover:bg-gray-600 transition">
-        🌓
-      </button>
-    </div>
-  </nav>
+    <!-- Resume -->
+    <a href="resume.html"
+       aria-label="Resume"
+       class="p-2 rounded hover:bg-gray-700 transition">
+      <i data-lucide="file-text" class="w-5 h-5 sm:w-6 sm:h-6"></i>
+    </a>
+
+    <!-- QR Page -->
+    <a href="qr.html"
+       aria-label="QR Code"
+       class="p-2 rounded hover:bg-gray-700 transition">
+      <i data-lucide="qr-code" class="w-5 h-5 sm:w-6 sm:h-6"></i>
+    </a>
+
+  </div>
+</nav>
+
 
   <!-- HERO -->
   <section class="text-center mt-10 px-6" data-aos="fade-up">
@@ -88,12 +99,22 @@
   </section>
 
   <!-- FOOTER -->
-  <footer class="text-center py-8 text-gray-500 dark:text-gray-400">
-    © 2025 Nicholas Murray •
-    <a href="mailto:ncmurray@gmail.com" class="hover:underline">Email</a> •
-    <a href="https://github.com/nich-OSU" class="hover:underline">GitHub</a> •
-    <a href="https://www.linkedin.com/in/nicholas-murray-mba-6664b63a/" class="hover:underline">LinkedIn</a>
-  </footer>
+  <footer class="text-center py-8 text-gray-600 dark:text-gray-400">
+
+  <div class="mb-4">
+    <button id="darkToggle"
+            class="px-4 py-2 rounded bg-gray-700 hover:bg-gray-600 text-white transition">
+      Toggle Dark Mode
+    </button>
+  </div>
+
+  © 2025 Nicholas Murray •
+  <a href="mailto:ncmurray@gmail.com" class="hover:underline">Email</a> •
+  <a href="https://github.com/nich-OSU" class="hover:underline">GitHub</a> •
+  <a href="https://www.linkedin.com/in/nicholas-murray-mba-6664b63a/" class="hover:underline">LinkedIn</a>
+
+</footer>
+
 
   <!-- AOS Script + Lucide Init -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
