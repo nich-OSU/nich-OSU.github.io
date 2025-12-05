@@ -1,70 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Project Videos - Nicholas Murray</title>
+<link rel="icon" href="favicon.ico" />
 
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Video Deliverables</title>
-
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://unpkg.com/lucide@latest"></script>
-  <script defer src="main.js"></script>
-
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-
+<script>
+tailwind.config = { darkMode: 'class' };
+</script>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
 </head>
 
-<body class="bg-gray-50 text-gray-900 dark:bg-gray-900 dark:text-gray-100 min-h-screen">
-  
-  <nav class="p-4 bg-gray-800 shadow-md flex justify-between items-center text-gray-100">
-    <h1 class="text-xl font-semibold">Video Deliverables</h1>
 
-    <div class="flex items-center space-x-4">
+<body class="bg-gray-50 text-gray-900 dark:bg-gray-900 dark:text-gray-100 min-h-screen flex flex-col">
 
-      <a href="index.html" class="hover:underline">← Home</a>
 
-      <button id="darkToggle" class="p-2 rounded bg-gray-700 hover:bg-gray-600">
-        🌓
-      </button>
-    </div>
-  </nav>
+<!-- NAVBAR -->
+<nav class="w-full py-4 px-6 flex justify-between items-center bg-gray-800 dark:bg-gray-800 text-gray-100 shadow-lg">
+<h1 class="text-lg sm:text-xl font-semibold tracking-wide">Videos</h1>
 
-  <div class="grid md:grid-cols-2 gap-10 max-w-5xl mx-auto mt-10 px-6">
 
-    <div data-aos="fade-up">
-      <a href="https://www.youtube.com/watch?v=JrovPBIFX2U" target="_blank">
-        <img src="https://img.youtube.com/vi/JrovPBIFX2U/hqdefault.jpg"
-             class="rounded-lg shadow-lg hover:scale-[1.02] transition" />
-      </a>
-      <h3 class="text-lg font-semibold mt-3">Anti-TimeSink Capstone Project</h3>
-      <p class="text-gray-600 dark:text-gray-400 text-sm">
-        DNS-based website blacklist system.
-      </p>
-    </div>
+<div class="flex items-center space-x-4">
+<a href="index.html" aria-label="Home" class="p-2 rounded hover:bg-gray-700 transition">
+<i data-lucide="home" class="w-5 h-5 sm:w-6 sm:h-6"></i>
+</a>
+</div>
+</nav>
 
-    <div data-aos="fade-up">
-      <a href="https://www.youtube.com/watch?v=NDSnDXv_4A0" target="_blank">
-        <img src="https://img.youtube.com/vi/NDSnDXv_4A0/hqdefault.jpg"
-             class="rounded-lg shadow-lg hover:scale-[1.02] transition" />
-      </a>
-      <h3 class="text-lg font-semibold mt-3">Ferry Finder Project</h3>
-      <p class="text-gray-600 dark:text-gray-400 text-sm">
-        Graphical ferry route visualization using WSF API.
-      </p>
-    </div>
 
-  </div>
+<!-- CONTENT -->
+<main class="flex-grow px-6 py-12 max-w-3xl mx-auto space-y-12">
 
-  <footer class="text-center py-10 text-gray-500 dark:text-gray-400">
-    <a href="index.html" class="hover:underline">← Back to Home</a>
-  </footer>
 
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script>
-    AOS.init();
-    lucide.createIcons();
-  </script>
+<div>
+<h2 class="text-xl font-semibold mb-2">Anti-TimeSink Capstone Project</h2>
+<a href="https://www.youtube.com/watch?v=JrovPBIFX2U" target="_blank" rel="noopener noreferrer">
+<img src="https://img.youtube.com/vi/JrovPBIFX2U/hqdefault.jpg" class="rounded-xl shadow-lg w-full max-w-md" />
+</a>
+<p class="mt-2 text-gray-600 dark:text-gray-300">
+Demonstration of the Anti-TimeSink project showing user‑initiated website blacklisting.
+</p>
+</div>
 
+
+<div>
+<h2 class="text-xl font-semibold mb-2">Ferry Finder – Web Visualization</h2>
+<a href="https://www.youtube.com/watch?v=NDSnDXv_4A0" target="_blank" rel="noopener noreferrer">
+<img src="https://img.youtube.com/vi/NDSnDXv_4A0/hqdefault.jpg" class="rounded-xl shadow-lg w-full max-w-md" />
+</a>
+<p class="mt-2 text-gray-600 dark:text-gray-300">
+Visualization tool using WSF API to show ferry routes based on current and future schedules.
+</p>
+</div>
+
+
+</main>
+
+
+<!-- FOOTER -->
+<footer class="text-center py-8 text-gray-600 dark:text-gray-400">
+<button id="darkToggle" class="px-4 py-2 rounded bg-gray-700 hover:bg-gray-600 text-white transition mb-4">
+Toggle Dark Mode
+</button>
+<a href="index.html" class="hover:underline">Back to Home</a>
+</footer>
+
+
+<script src="main.js"></script>
+<script> lucide.createIcons(); </script>
 </body>
 </html>
