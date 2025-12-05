@@ -39,15 +39,46 @@ tailwind.config = { darkMode: 'class' };
 
 
 <!-- MAIN CONTENT -->
-<main class="flex-grow px-6 py-12 max-w-3xl mx-auto">
-<h2 class="text-3xl font-bold mb-4">Welcome</h2>
-<p class="text-lg mb-6">Hi, I'm Nicholas Murray — a software developer specializing in Python, JavaScript, backend systems, and applied problem‑solving.</p>
+<section class="text-center mt-10 px-6" data-aos="fade-up">
+    <img src="profile.png" alt="Profile Photo"
+         class="w-32 h-32 mx-auto rounded-full shadow-lg border border-gray-700" />
 
+    <h2 class="text-4xl font-bold mt-6">Software Developer</h2>
+    <p class="text-gray-600 dark:text-gray-300 mt-2 max-w-xl mx-auto">
+      Python · JavaScript · Backend Systems · Problem Solver · Continuous Learner
+    </p>
 
-<a href="resume.html" class="inline-block mt-4 px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-500 transition">
-View Resume
-</a>
-</main>
+    <div class="mt-6">
+      <a href="resume.html"
+         class="inline-block bg-blue-600 hover:bg-blue-500 text-white px-6 py-3 rounded-lg shadow transition">
+        View Resume
+      </a>
+    </div>
+  </section>
+
+  <!-- ABOUT ME -->
+  <section class="max-w-3xl mx-auto my-16 px-6" data-aos="fade-up">
+    <h3 class="text-2xl font-semibold mb-4">About Me</h3>
+    <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+      I recently graduated with a Bachelor's degree in Computer Science and am pursuing a career
+      as a Software Development Engineer. I enjoy solving real problems with clean, maintainable code
+      and building projects that stretch my understanding of systems and algorithms.
+    </p>
+  </section>
+
+  <!-- HIDDEN PROJECTS SECTION -->
+  <section id="projects" class="hidden max-w-4xl mx-auto my-16 px-6" data-aos="fade-up">
+    <h3 class="text-2xl font-semibold mb-4">Projects</h3>
+    <p class="text-gray-500 dark:text-gray-400 italic">This section is currently under construction.</p>
+  </section>
+
+  <!-- LINK TO VIDEOS -->
+  <section class="text-center my-20">
+    <a href="videos.html"
+       class="text-blue-500 hover:underline text-lg">
+       → View Video Deliverables
+    </a>
+  </section>
 
 
 <!-- FOOTER -->
