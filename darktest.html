@@ -26,6 +26,24 @@
     </button>
   </div>
 
+  <!-- Dark/Light Mode Toggle -->
+  <div class="flex items-center justify-center space-x-3">
+  
+    <!-- Sun icon -->
+    <i data-lucide="sun" class="w-5 h-5 text-yellow-500 dark:text-gray-400"></i>
+  
+    <!-- Toggle switch -->
+    <button data-dark-toggle
+      class="relative inline-flex h-6 w-12 items-center rounded-full transition bg-gray-300 dark:bg-gray-700">
+      <span class="toggle-thumb inline-block h-5 w-5 transform rounded-full bg-white transition-all"></span>
+    </button>
+  
+    <!-- Moon icon -->
+    <i data-lucide="moon" class="w-5 h-5 text-gray-600 dark:text-yellow-300"></i>
+  
+  </div>
+
+  
   <script>
     const btn = document.getElementById('testToggle');
     btn.addEventListener('click', () => {
