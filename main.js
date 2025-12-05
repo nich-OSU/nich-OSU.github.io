@@ -1,6 +1,4 @@
-// main.js - robust theme toggler
-
-// helper to apply theme
+// Apply stored theme on load
 function applyTheme(theme) {
   if (theme === "dark") {
     document.documentElement.classList.add("dark");
@@ -9,24 +7,31 @@ function applyTheme(theme) {
   }
 }
 
-// initial theme: saved or system preference (default to light)
+// Load initial theme
 const saved = localStorage.getItem("theme");
-const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
-const initial = saved ? saved : (prefersDark ? "dark" : "light");
+const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+const initial = saved || (prefersDark ? "dark" : "light");
 applyTheme(initial);
 
-// find any toggle controls (use data attribute or id)
-const toggles = document.querySelectorAll('[data-dark-toggle]');
+// Update toggle UI state
+function updateToggleUI() {
+  const isDark = document.documentElement.classList.contains("dark");
+  document.querySelectorAll("[data-dark-toggle] .toggle-thumb").forEach(th => {
+    th.style.transform = isDark ? "translateX(1.5rem)" : "translateX(0)";
+  });
+}
 
-// add click handlers
-toggles.forEach(btn => {
+// Attach event to toggle buttons
+document.querySelectorAll("[data-dark-toggle]").forEach(btn => {
   btn.addEventListener("click", () => {
-    // flip
-    const isNowDark = document.documentElement.classList.toggle("dark");
-    const newTheme = isNowDark ? "dark" : "light";
-    localStorage.setItem("theme", newTheme);
+    const nowDark = document.documentElement.classList.toggle("dark");
+    localStorage.setItem("theme", nowDark ? "dark" : "light");
+    updateToggleUI();
   });
 });
 
-// debug helper: expose status in console
-console.log("Theme initialized as:", document.documentElement.classList.contains("dark") ? "dark" : "light");
+// Initialize thumb position
+updateToggleUI();
+
+// Debug
+console.log("Dark mode:", initial);
