@@ -36,7 +36,21 @@ tailwind.config = { darkMode: 'class' };
 <h2 class="text-2xl font-semibold mb-6">Scan to Visit My Portfolio</h2>
 
 
-<img src="qr-code.png" alt="QR Code linking to homepage" class="w-64 h-64 shadow-lg rounded-lg mb-6" />
+<!-- put this where the QR should be -->
+<canvas id="qrCanvas" class="shadow-lg rounded-lg bg-white p-2"></canvas>
+
+<script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
+<script>
+  const url = "https://nich-OSU.github.io/";  // <- change if needed
+  const canvas = document.getElementById("qrCanvas");
+  QRCode.toCanvas(canvas, url, { width: 320, margin: 2 }, function (err) {
+    if (err) {
+      console.error("QR generation error:", err);
+      // fallback: show link
+      canvas.insertAdjacentHTML('afterend', '<p class="text-sm text-red-500">QR could not be generated. <a href="'+url+'">Open site</a></p>');
+    }
+  });
+</script>
 
 
 <p class="text-gray-600 dark:text-gray-300">Point your smartphone camera at the QR code to open my site.</p>
