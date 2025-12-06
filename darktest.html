@@ -5,52 +5,85 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Dark Mode Test</title>
 
-  <!-- IMPORTANT: TAILWIND CONFIG MUST BE BEFORE CDN -->
-  <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+  <!-- Tailwind with Dark Mode Config -->
   <script>
-    tailwind.config = {
-      darkMode: 'class'
-    }
+    tailwind = {
+      darkMode: "class",
+    };
   </script>
 
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 
-<body class="bg-gray-50 text-gray-900 dark:bg-gray-900 dark:text-gray-100 min-h-screen flex items-center justify-center">
+<body class="bg-gray-50 text-gray-900 dark:bg-gray-900 dark:text-gray-100 min-h-screen flex flex-col items-center justify-center gap-6">
 
-  <div class="text-center">
-    <h1 class="text-3xl font-bold mb-4">Dark Mode Test</h1>
-    <p class="mb-6">If dark mode works, the background should turn dark and text should turn white.</p>
+  <h1 class="text-3xl font-bold">Dark Mode Toggle Test</h1>
 
-    <button id="testToggle" class="px-4 py-2 bg-gray-800 text-white rounded">
-      Toggle Dark Mode
-    </button>
-  </div>
+  <!-- 🌅/🌙 Watch-Complication Toggle -->
+  <button data-dark-toggle 
+    class="relative w-16 h-8 bg-gray-300 dark:bg-gray-700 rounded-full overflow-hidden flex items-center justify-center shadow-inner transition-colors">
 
-  <!-- Dark/Light Mode Toggle -->
-  <div class="flex items-center justify-center space-x-3">
-  
-    <!-- Sun icon -->
-    <i data-lucide="sun" class="w-5 h-5 text-yellow-500 dark:text-gray-400"></i>
-  
-    <!-- Toggle switch -->
-    <button data-dark-toggle
-      class="relative inline-flex h-6 w-12 items-center rounded-full transition bg-gray-300 dark:bg-gray-700">
-      <span class="toggle-thumb inline-block h-5 w-5 transform rounded-full bg-white transition-all"></span>
-    </button>
-  
-    <!-- Moon icon -->
-    <i data-lucide="moon" class="w-5 h-5 text-gray-600 dark:text-yellow-300"></i>
-  
-  </div>
+    <!-- Stationary circular window -->
+    <div class="relative w-6 h-6 overflow-hidden rounded-full shadow bg-white dark:bg-gray-900 transition-colors">
+      
+      <!-- Icon stack: sun (top), moon (bottom) -->
+      <div class="icon-stack absolute inset-0 flex flex-col items-center transition-transform duration-500 ease-in-out">
+        
+        <!-- Sun icon -->
+        <i data-lucide="sun" class="w-5 h-5 text-yellow-500 mb-1"></i>
 
-  
+        <!-- Moon icon -->
+        <i data-lucide="moon" class="w-5 h-5 text-blue-200 mt-1"></i>
+
+      </div>
+    </div>
+  </button>
+
+  <p>This page should fade between light and dark modes when the icon rises/sets.</p>
+
   <script>
-    const btn = document.getElementById('testToggle');
-    btn.addEventListener('click', () => {
-      document.documentElement.classList.toggle('dark');
+    // Load saved theme
+    if (
+      localStorage.getItem("theme") === "dark" ||
+      (!localStorage.getItem("theme") &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches)
+    ) {
+      document.documentElement.classList.add("dark");
+    }
+
+    // Update the toggle animation
+    function updateToggleUI() {
+      const isDark = document.documentElement.classList.contains("dark");
+      const stack = document.querySelector(".icon-stack");
+
+      if (!stack) return;
+
+      // Shift icons up/down:
+      // Light mode → sun centered
+      // Dark mode → moon centered
+      stack.style.transform = isDark 
+        ? "translateY(-1.5rem)"  // Moon rises
+        : "translateY(0)";       // Sun rises
+    }
+
+    updateToggleUI(); // initial alignment
+
+    // Attach click handler to toggle
+    document.querySelectorAll("[data-dark-toggle]").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const nowDark = document.documentElement.classList.toggle("dark");
+        localStorage.setItem("theme", nowDark ? "dark" : "light");
+        updateToggleUI();
+      });
     });
+
+    // Render icons
+    lucide.createIcons();
   </script>
-  <script>lucide.createIcons();</script>
 
 </body>
 </html>
