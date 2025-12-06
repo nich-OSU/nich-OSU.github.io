@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Dark Mode Test</title>
 
-  <!-- Tailwind CSS w/ Dark Mode Enabled -->
+  <!-- Tailwind (dark mode enabled) -->
   <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
   <script>
     tailwind.config = {
@@ -13,50 +13,51 @@
     };
   </script>
 
-  <!-- Lucide Icons -->
+  <!-- Lucide -->
   <script src="https://unpkg.com/lucide@latest"></script>
+
 </head>
 
-<body class="bg-gray-50 text-gray-900 dark:bg-gray-900 dark:text-gray-100 min-h-screen flex flex-col items-center justify-center gap-8">
+<body class="bg-gray-50 text-gray-900 dark:bg-gray-900 dark:text-gray-100 
+             transition-colors duration-700 ease-in-out
+             min-h-screen flex flex-col items-center justify-center gap-8">
 
   <h1 class="text-3xl font-bold">Dark Mode Toggle Test</h1>
 
-  <!-- 🌞/🌙 Mechanical Watch-Style Toggle -->
+  <!-- Watch-style toggle -->
   <button 
     data-dark-toggle
-    class="relative w-16 h-8 rounded-full bg-gray-300 dark:bg-gray-700 flex items-center justify-center shadow-inner transition-colors overflow-hidden"
-  >
-    <!-- Stationary aperture (window) -->
-    <div class="relative w-7 h-7 rounded-full overflow-hidden bg-white dark:bg-gray-900 shadow-inner flex items-center justify-center">
+    class="relative w-20 h-10 rounded-full bg-gray-300 dark:bg-gray-700 
+           flex items-center justify-center shadow-inner overflow-hidden 
+           transition-colors duration-700 ease-in-out">
 
-      <!-- Rotating disc (Option A: subtle size) -->
-      <div class="icon-disc relative w-12 h-12 transition-transform duration-700 ease-in-out [transform-origin:50%_80%]">
+    <!-- Stationary aperture -->
+    <div class="relative w-8 h-8 rounded-full overflow-hidden 
+                bg-white dark:bg-gray-900 shadow-inner flex items-center justify-center">
 
-        <!-- Sun at top (visible in light mode) -->
-        <i 
-          data-lucide="sun"
-          class="absolute top-0 left-1/2 -translate-x-1/2 w-6 h-6 text-yellow-500"
-        ></i>
+      <!-- Rotating disc -->
+      <div class="icon-disc relative w-14 h-14 
+                  transition-transform duration-700 ease-in-out
+                  [transform-origin:50%_50%]">
 
-        <!-- Moon at bottom (upside down so it rotates upright) -->
-        <i 
-          data-lucide="moon"
-          class="absolute bottom-0 left-1/2 -translate-x-1/2 w-6 h-6 text-blue-200 rotate-180"
-        ></i>
+        <!-- Sun -->
+        <i data-lucide="sun"
+           class="absolute top-0 left-1/2 -translate-x-1/2
+                  w-6 h-6 text-yellow-500">
+        </i>
+
+        <!-- Moon (rotated upside down so it rises upright) -->
+        <i data-lucide="moon"
+           class="absolute bottom-0 left-1/2 -translate-x-1/2
+                  w-6 h-6 text-blue-200 rotate-180">
+        </i>
 
       </div>
     </div>
   </button>
 
-  <p class="text-center px-4">
-    Only one icon should appear in the window at a time.  
-    Rotation should always be clockwise.
-  </p>
-
   <script>
-    /*********************************
-     * Restore saved theme
-     *********************************/
+    /************* Restore Theme *************/
     if (
       localStorage.getItem("theme") === "dark" ||
       (!localStorage.getItem("theme") &&
@@ -65,36 +66,30 @@
       document.documentElement.classList.add("dark");
     }
 
-    /*********************************
-     * Update animation based on mode
-     *********************************/
-    let rotation = 0;  // track actual rotation so we always go clockwise
+    /************* Rotation Control *************/
+    let rotation = document.documentElement.classList.contains("dark") ? 180 : 0;
 
-    function updateToggleUI() {
-      const isDark = document.documentElement.classList.contains("dark");
+    function applyRotation() {
       const disc = document.querySelector(".icon-disc");
-      if (!disc) return;
-
-      // Always rotate 180° clockwise
-      rotation += 180;
       disc.style.transform = `rotate(${rotation}deg)`;
     }
 
-    // Align on load
-    updateToggleUI();
+    applyRotation();
 
-    /*********************************
-     * Toggle dark mode
-     *********************************/
-    document.querySelectorAll("[data-dark-toggle]").forEach(btn => {
-      btn.addEventListener("click", () => {
+    /************* Toggle Handler *************/
+    document.querySelector("[data-dark-toggle]").addEventListener("click", () => {
+
+      // Always add 180° (always clockwise)
+      rotation += 180;
+      applyRotation();
+
+      // Theme should flip near the end of rotation
+      setTimeout(() => {
         const nowDark = document.documentElement.classList.toggle("dark");
         localStorage.setItem("theme", nowDark ? "dark" : "light");
-        updateToggleUI();
-      });
+      }, 450); // sync with 700ms rotation
     });
 
-    // Render icons
     lucide.createIcons();
   </script>
 
