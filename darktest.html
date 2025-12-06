@@ -5,13 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Dark Mode Test</title>
 
-  <!-- Tailwind with Dark Mode Config -->
-  <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+  <!-- Tailwind CSS (dark mode enabled via class) -->
   <script>
-    tailwind.config = {
-      darkMode: 'class'
-    }
+    tailwind = {
+      config: {
+        darkMode: "class",
+      },
+    };
   </script>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+
   <!-- Lucide Icons -->
   <script src="https://unpkg.com/lucide@latest"></script>
 </head>
@@ -20,30 +23,35 @@
 
   <h1 class="text-3xl font-bold">Dark Mode Toggle Test</h1>
 
-  <!-- 🌅/🌙 Watch-Complication Toggle -->
-  <button data-dark-toggle 
-    class="relative w-16 h-8 bg-gray-300 dark:bg-gray-700 rounded-full overflow-hidden flex items-center justify-center shadow-inner transition-colors">
+  <!-- 🌞/🌙 Mechanical Watch-Style Toggle -->
+  <button 
+    data-dark-toggle
+    class="relative w-16 h-8 rounded-full bg-gray-300 dark:bg-gray-700 flex items-center justify-center shadow-inner transition-colors overflow-hidden"
+  >
+    <!-- Stationary aperture (window) -->
+    <div class="relative w-7 h-7 rounded-full overflow-hidden bg-white dark:bg-gray-900 shadow-inner flex items-center justify-center">
 
-    <!-- Stationary circular window -->
-    <div class="relative w-6 h-6 overflow-hidden rounded-full shadow bg-white dark:bg-gray-900 transition-colors">
-      
-      <!-- Icon stack: sun (top), moon (bottom) -->
-      <div class="icon-stack absolute inset-0 flex flex-col items-center transition-transform duration-500 ease-in-out">
-        
-        <!-- Sun icon -->
-        <i data-lucide="sun" class="w-5 h-5 text-yellow-500 mb-1"></i>
+      <!-- Rotating disc with sun & moon -->
+      <div class="icon-disc relative w-12 h-12 transition-transform duration-700 ease-in-out">
 
-        <!-- Moon icon -->
-        <i data-lucide="moon" class="w-5 h-5 text-blue-200 mt-1"></i>
+        <!-- Sun (upright, top center) -->
+        <i data-lucide="sun"
+           class="absolute top-0 left-1/2 -translate-x-1/2 w-6 h-6 text-yellow-500">
+        </i>
+
+        <!-- Moon (upside down, bottom center so rotates upright at 180°) -->
+        <i data-lucide="moon"
+           class="absolute bottom-0 left-1/2 -translate-x-1/2 w-6 h-6 text-blue-200 rotate-180">
+        </i>
 
       </div>
     </div>
   </button>
 
-  <p>This page should fade between light and dark modes when the icon rises/sets.</p>
+  <p class="text-center">Sun should rotate out → moon rotates in (always clockwise).<br>Dark mode toggles when moon is centered.</p>
 
   <script>
-    // Load saved theme
+    /* Load saved theme */
     if (
       localStorage.getItem("theme") === "dark" ||
       (!localStorage.getItem("theme") &&
@@ -52,33 +60,31 @@
       document.documentElement.classList.add("dark");
     }
 
-    // Update the toggle animation
+    /* Update the toggle UI (rotation) */
     function updateToggleUI() {
       const isDark = document.documentElement.classList.contains("dark");
-      const stack = document.querySelector(".icon-stack");
+      const disc = document.querySelector(".icon-disc");
 
-      if (!stack) return;
+      if (!disc) return;
 
-      // Shift icons up/down:
-      // Light mode → sun centered
-      // Dark mode → moon centered
-      stack.style.transform = isDark 
-        ? "translateY(-1.5rem)"  // Moon rises
-        : "translateY(0)";       // Sun rises
+      // Rotate exactly 180 degrees between states
+      disc.style.transform = isDark
+        ? "rotate(180deg)"   // show moon
+        : "rotate(0deg)";     // show sun
     }
 
-    updateToggleUI(); // initial alignment
+    updateToggleUI(); // align on page load
 
-    // Attach click handler to toggle
+    /* Event listeners for toggle switches */
     document.querySelectorAll("[data-dark-toggle]").forEach(btn => {
       btn.addEventListener("click", () => {
-        const nowDark = document.documentElement.classList.toggle("dark");
-        localStorage.setItem("theme", nowDark ? "dark" : "light");
+        const isNowDark = document.documentElement.classList.toggle("dark");
+        localStorage.setItem("theme", isNowDark ? "dark" : "light");
         updateToggleUI();
       });
     });
 
-    // Render icons
+    /* Render Lucide icons */
     lucide.createIcons();
   </script>
 
