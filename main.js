@@ -1,40 +1,3 @@
-// // Apply stored theme on load
-// function applyTheme(theme) {
-//   if (theme === "dark") {
-//     document.documentElement.classList.add("dark");
-//   } else {
-//     document.documentElement.classList.remove("dark");
-//   }
-// }
-
-// // Load initial theme
-// const saved = localStorage.getItem("theme");
-// const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-// const initial = saved || (prefersDark ? "dark" : "light");
-// applyTheme(initial);
-
-// // Update toggle UI state
-// function updateToggleUI() {
-//   const isDark = document.documentElement.classList.contains("dark");
-//   document.querySelectorAll("[data-dark-toggle] .toggle-thumb").forEach(th => {
-//     th.style.transform = isDark ? "translateX(1.5rem)" : "translateX(0)";
-//   });
-// }
-
-// // Attach event to toggle buttons
-// document.querySelectorAll("[data-dark-toggle]").forEach(btn => {
-//   btn.addEventListener("click", () => {
-//     const nowDark = document.documentElement.classList.toggle("dark");
-//     localStorage.setItem("theme", nowDark ? "dark" : "light");
-//     updateToggleUI();
-//   });
-// });
-
-// // Initialize thumb position
-// updateToggleUI();
-
-// // Debug
-// console.log("Dark mode:", initial);
 
 /***********************************************
  * Restore Theme on Page Load
@@ -88,4 +51,55 @@ document.addEventListener("click", event => {
     localStorage.setItem("theme", nowDark ? "dark" : "light");
   }, 450); // Matches CSS rotation timing
 });
+
+
+const moonFaviconMap = [
+  "moon-new.png",
+  "moon-waxing-crescent.png",
+  "moon-first-quarter.png",
+  "moon-waxing-gibbous.png",
+  "moon-full.png",
+  "moon-waning-gibbous.png",
+  "moon-last-quarter.png",
+  "moon-waning-crescent.png"
+];
+
+function updateFavicon() {
+  const phase = getMoonPhase();
+  const favicon = document.querySelector("link[rel~='icon']");
+  
+  if (favicon) {
+    favicon.href = moonFaviconMap[phase];
+  } else {
+    const link = document.createElement("link");
+    link.rel = "icon";
+    link.href = moonFaviconMap[phase];
+    document.head.appendChild(link);
+  }
+}
+
+function getMoonPhase() {
+  const now = new Date();
+  let year = now.getFullYear();
+  let month = now.getMonth() + 1; // JS months 0-11
+  let day = now.getDate();
+
+  if (month < 3) {
+    year--;
+    month += 12;
+  }
+
+  const K1 = Math.floor(365.25 * (year + 4712));
+  const K2 = Math.floor(30.6 * (month + 1));
+  const K3 = Math.floor(Math.floor((year / 100) + 49) * 0.75) - 38;
+
+  const jd = K1 + K2 + day + 59;   // Julian Day number (approx)
+  const phase = ((jd - 2451550.1) / 29.53058867) % 1;
+
+  const index = Math.floor(phase * 8 + 0.5) % 8;
+  return index; // 0–7
+}
+
+console.log(getMoonPhase())
+// updateFavicon();
 
