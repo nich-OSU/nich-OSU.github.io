@@ -85,22 +85,33 @@
 
 <!-- FOOTER -->
 <footer class="text-center py-8 text-gray-600 dark:text-gray-400">
-<!-- Dark/Light Mode Toggle -->
-<div class="flex items-center justify-center space-x-3">
+<!-- Watch-style toggle -->
+  <button 
+    data-dark-toggle
+    class="relative w-20 h-10 rounded-full bg-gray-300 dark:bg-gray-700 
+           flex items-center justify-center shadow-inner overflow-hidden 
+           transition-colors duration-700 ease-in-out">
 
-  <!-- Sun icon -->
-  <i data-lucide="sun" class="w-5 h-5 text-yellow-500 dark:text-gray-400"></i>
+    <!-- Stationary aperture -->
+    <div class="relative w-10 h-7 rounded-full overflow-hidden 
+                bg-white dark:bg-gray-900 shadow-inner flex items-center justify-center">
 
-  <!-- Toggle switch -->
-  <button data-dark-toggle
-    class="relative inline-flex h-6 w-12 items-center rounded-full transition bg-gray-300 dark:bg-gray-700">
-    <span class="toggle-thumb inline-block h-5 w-5 transform rounded-full bg-white transition-all"></span>
+      <!-- Rotating disc -->
+      <div class="icon-disc absolute w-14 h-14 transition-transform duration-700 ease-in-out
+                   [transform-origin:50%_50%]
+                   top-[-0%]"> <i data-lucide="sun"
+           class="absolute top-0.5 left-1/2 -translate-x-1/2
+                  w-6 h-6 text-yellow-500">
+        </i>
+
+        <i data-lucide="moon"
+           class="absolute bottom-0.5 left-1/2 -translate-x-1/2
+                  w-6 h-6 text-blue-200 rotate-180">
+        </i>
+
+      </div>
+    </div>
   </button>
-
-  <!-- Moon icon -->
-  <i data-lucide="moon" class="w-5 h-5 text-gray-600 dark:text-yellow-300"></i>
-
-</div>
 
 
 
