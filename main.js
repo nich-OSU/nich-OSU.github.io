@@ -121,5 +121,5 @@ function getMoonPhase() {
 // console.log("Moon Phase Index:", currentPhaseIndex);
 
 console.log(getMoonPhase())
-// updateFavicon();
+updateFavicon();
 
