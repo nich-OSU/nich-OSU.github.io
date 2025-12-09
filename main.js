@@ -82,7 +82,7 @@ function updateFavicon() {
  * Calculates the current approximate phase of the moon (index 0-7).
  * Uses a more accurate Julian Day calculation and precise astronomical constants.
  */
-function getMoonPhaseAccurate() {
+function getMoonPhase() {
   const now = new Date();
   let year = now.getFullYear();
   let month = now.getMonth() + 1; // JS months 0-11
