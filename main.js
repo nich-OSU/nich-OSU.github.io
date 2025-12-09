@@ -120,6 +120,6 @@ function getMoonPhase() {
 // const currentPhaseIndex = getMoonPhaseAccurate();
 // console.log("Moon Phase Index:", currentPhaseIndex);
 
-console.log(getMoonPhase())
+console.log("This is the phase of the moon:", moonFaviconMap[getMoonPhase()])
 updateFavicon();
 
