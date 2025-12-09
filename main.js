@@ -78,27 +78,47 @@ function updateFavicon() {
   }
 }
 
-function getMoonPhase() {
+/**
+ * Calculates the current approximate phase of the moon (index 0-7).
+ * Uses a more accurate Julian Day calculation and precise astronomical constants.
+ */
+function getMoonPhaseAccurate() {
   const now = new Date();
   let year = now.getFullYear();
   let month = now.getMonth() + 1; // JS months 0-11
   let day = now.getDate();
 
-  if (month < 3) {
-    year--;
-    month += 12;
+  // --- 1. Calculate Accurate Julian Day (JD) at 00:00 UT ---
+  let a = Math.floor((14 - month) / 12);
+  let y = year + 4800 - a;
+  let m = month + 12 * a - 3;
+
+  const JD = day + Math.floor((153 * m + 2) / 5) + (365 * y) + 
+             Math.floor(y / 4) - Math.floor(y / 100) + Math.floor(y / 400) - 32045;
+
+  // --- 2. Calculate Phase Fraction ---
+  const referenceNewMoon = 2451550.09765; // Precise JD of New Moon Jan 6, 2000
+  const synodicMonth = 29.530588853;     // Precise average lunar cycle length
+
+  const daysSinceNewMoon = JD - referenceNewMoon;
+  
+  // Calculate phase fraction (0 to 1). The result might be negative, so we adjust.
+  let phaseFraction = (daysSinceNewMoon / synodicMonth) % 1;
+
+  // Normalize negative result (if daysSinceNewMoon was negative or % returned negative)
+  if (phaseFraction < 0) {
+    phaseFraction += 1;
   }
 
-  const K1 = Math.floor(365.25 * (year + 4712));
-  const K2 = Math.floor(30.6 * (month + 1));
-  const K3 = Math.floor(Math.floor((year / 100) + 49) * 0.75) - 38;
-
-  const jd = K1 + K2 + day + 59;   // Julian Day number (approx)
-  const phase = ((jd - 2451550.1) / 29.53058867) % 1;
-
-  const index = Math.floor(phase * 8 + 0.5) % 8;
-  return index; // 0–7
+  // --- 3. Convert to 8-Step Index (0-7) ---
+  const index = Math.floor(phaseFraction * 8 + 0.5) % 8;
+  
+  return index; // 0: New Moon, 4: Full Moon
 }
+
+// Example usage:
+// const currentPhaseIndex = getMoonPhaseAccurate();
+// console.log("Moon Phase Index:", currentPhaseIndex);
 
 console.log(getMoonPhase())
 // updateFavicon();
